@@ -1,0 +1,129 @@
+Skip to content
+Navigation Menu
+ritikakumari1657
+B29-100-code
+
+Type / to search
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+B29-100-code
+/
+Name your file...
+in
+main
+
+Edit
+
+Preview
+Indent mode
+
+Spaces
+Indent size
+
+2
+Line wrap mode
+
+No wrap
+Editing file contents
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+Q31: Write a program to take a number as input and print its equivalent binary representation.
+#include <stdio.h>
+
+int main() {
+    int decimal_num;
+    int binary_array[32]; 
+    int i = 0;
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimal_num);
+    if (decimal_num == 0) {
+        printf("Binary equivalent: 0\n");
+        return 0;
+    }
+    while (decimal_num > 0) {
+        binary_array[i] = decimal_num % 2; 
+        decimal_num /= 2;                
+        i++;                             
+    }
+    printf("Binary equivalent: ");
+    for (int j = i - 1; j >= 0; j--) {
+        printf("%d", binary_array[j]);
+    }
+    printf("\n");
+
+    return 0;
+}
+Q32: Write a program to check if a number is a palindrome.
+#include <stdio.h>
+
+int main() {
+    int number, originalNumber, reversedNumber = 0, remainder; 
+    printf("Enter an integer: ");
+    scanf("%d", &number);
+    originalNumber = number;
+    while (number != 0) {
+        remainder = number % 10;
+        reversedNumber = reversedNumber * 10 + remainder;
+        number /= 10;
+    }
+    if (originalNumber == reversedNumber) {
+        printf("%d is a palindrome number.\n", originalNumber);
+    } else {
+        printf("%d is not a palindrome number.\n", originalNumber);
+    }
+
+    return 0;
+}
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.
+New File at / · ritikakumari1657/B29-100-code 
