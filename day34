@@ -1,0 +1,67 @@
+Q67: Insert an element in an array at a given position.
+
+#include <stdio.h>
+
+int main() {
+    int arr[100]; 
+    int size;      
+    int element;   
+    int position;  
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &size);
+    printf("Enter %d elements:\n", size);
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter the element to insert: ");
+    scanf("%d", &element);
+    printf("Enter the position (0 to %d) to insert the element: ", size);
+    scanf("%d", &position);
+    if (position < 0 || position > size || size >= 100) {
+        printf("Invalid position or array is full.\n");
+    } else {
+        for (int i = size - 1; i >= position; i--) {
+            arr[i + 1] = arr[i];
+        }
+        arr[position] = element;
+        size++;
+        printf("Array after insertion:\n");
+        for (int i = 0; i < size; i++) {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+Q68: Delete an element from an array.
+
+#include <stdio.h>
+
+void deleteElement(int arr[], int *size, int position) {
+    if (position < 0 || position >= *size) {
+        printf("Invalid position for deletion.\n");
+        return;
+    }
+    for (int i = position; i < *size - 1; i++) {
+        arr[i] = arr[i + 1];
+    }
+    (*size)--;
+}
+int main() {
+    int arr[100] = {10, 20, 30, 40, 50};
+    int size = 5; 
+    int positionToDelete = 2; 
+    printf("Original array: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    deleteElement(arr, &size, positionToDelete);
+    printf("Array after deletion: ");
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
