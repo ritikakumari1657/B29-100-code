@@ -1,0 +1,85 @@
+Q69: Find the second largest element in an array.
+
+#include <stdio.h>
+#include <limits.h> 
+int findSecondLargest(int arr[], int n) {
+    if (n < 2) {
+        printf("Array should have at least two elements.\n");
+        return INT_MIN;
+    }
+    int largest = INT_MIN;
+    int secondLargest = INT_MIN;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];      
+        } else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+    if (secondLargest == INT_MIN) {
+        printf("No distinct second largest element found (e.g., all elements are the same).\n");
+    }
+    return secondLargest;
+}
+int main() {
+    int arr1[] = {12, 35, 1, 10, 34, 1};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    printf("Second largest in arr1: %d\n", findSecondLargest(arr1, n1));
+    int arr2[] = {5, 5, 5, 5};
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    printf("Second largest in arr2: %d\n", findSecondLargest(arr2, n2));
+    int arr3[] = {10};
+    int n3 = sizeof(arr3) / sizeof(arr3[0]);
+    printf("Second largest in arr3: %d\n", findSecondLargest(arr3, n3));
+    int arr4[] = {1, 2, 3, 4, 5};
+    int n4 = sizeof(arr4) / sizeof(arr4[0]);
+    printf("Second largest in arr4: %d\n", findSecondLargest(arr4, n4));
+    return 0;
+}
+
+Q70: Rotate an array to the right by k positions.
+
+#include <stdio.h>
+#include <stdlib.h> 
+void rotateRight(int arr[], int n, int k) {
+    if (n == 0 || k == 0) {
+        return;
+    }
+    k = k % n; 
+    if (k == 0) {
+        return;
+    }
+    int *temp = (int *)malloc(k * sizeof(int));
+    if (temp == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+    for (int i = 0; i < k; i++) {
+        temp[i] = arr[n - k + i];
+    }
+    for (int i = n - k - 1; i >= 0; i--) {
+        arr[i + k] = arr[i];
+    }
+    for (int i = 0; i < k; i++) {
+        arr[i] = temp[i];
+    }
+    free(temp);
+}
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k = 3;
+    printf("Original array: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    rotateRight(arr, n, k);
+    printf("Array after rotating right by %d positions: ", k);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
