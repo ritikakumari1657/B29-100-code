@@ -1,0 +1,84 @@
+Q73: Find the sum of each row of a matrix and store it in an array.
+
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter the number of columns: ");
+    scanf("%d", &cols);
+    int matrix[rows][cols];
+    int row_sums[rows];
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("Enter element at [%d][%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        int current_row_sum = 0;
+        for (int j = 0; j < cols; j++) {
+            current_row_sum += matrix[i][j];
+        }
+        row_sums[i] = current_row_sum;
+    }
+    printf("\nThe matrix is:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%4d", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\nSum of each row:\n");
+    for (int i = 0; i < rows; i++) {
+        printf("Row %d sum: %d\n", i + 1, row_sums[i]);
+    }
+
+    return 0;
+}
+
+Q74: Find the transpose of a matrix.
+
+#include <stdio.h>
+
+#define MAX_ROWS 10
+#define MAX_COLS 10
+int main() {
+    int originalMatrix[MAX_ROWS][MAX_COLS];
+    int transposedMatrix[MAX_COLS][MAX_ROWS];
+    int rows, cols;
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter the number of columns: ");
+    scanf("%d", &cols);
+    printf("Enter elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("Enter element [%d][%d]: ", i, j);
+            scanf("%d", &originalMatrix[i][j]);
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            transposedMatrix[j][i] = originalMatrix[i][j];
+        }
+    }
+    printf("\nOriginal Matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d\t", originalMatrix[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\nTransposed Matrix:\n");
+    for (int i = 0; i < cols; i++) { 
+        for (int j = 0; j < rows; j++) { 
+            printf("%d\t", transposedMatrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
