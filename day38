@@ -1,0 +1,88 @@
+Q75: Add two matrices . 
+
+#include <stdio.h>
+
+int main() {
+    int rows, cols, i, j;
+    int matrixA[100][100], matrixB[100][100], sumMatrix[100][100];
+ printf("Enter the number of rows (max 100): ");
+    scanf("%d", &rows);
+    printf("Enter the number of columns (max 100): ");
+    scanf("%d", &cols);
+    printf("\nEnter elements of the first matrix:\n");
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            printf("Enter element a%d%d: ", i + 1, j + 1);
+            scanf("%d", &matrixA[i][j]);
+        }
+    }
+    printf("\nEnter elements of the second matrix:\n");
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            printf("Enter element b%d%d: ", i + 1, j + 1);
+            scanf("%d", &matrixB[i][j]);
+        }
+    }
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            sumMatrix[i][j] = matrixA[i][j] + matrixB[i][j];
+        }
+    }
+printf("\nSum of the two matrices is:\n");
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < cols; j++) {
+            printf("%d ", sumMatrix[i][j]);
+            if (j == cols - 1) {
+                printf("\n");
+            }
+        }
+    }
+
+    return 0;
+}
+
+Q76: Check if a matrix is symmetric.
+
+#include <stdio.h>
+#include <stdbool.h>
+bool isSymmetric(int rows, int cols, int matrix[rows][cols]) {
+if (rows != cols) {
+        return false;
+    }
+for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (matrix[i][j] != matrix[j][i]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+int main() {
+    int rows, cols;
+    printf("Enter the number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter the number of columns: ");
+    scanf("%d", &cols);
+    int matrix[rows][cols];
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("Enter element [%d][%d]: ", i, j);
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    printf("\nThe entered matrix is:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d\t", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    if (isSymmetric(rows, cols, matrix)) {
+        printf("\nThe matrix is symmetric.\n");
+    } else {
+        printf("\nThe matrix is not symmetric.\n");
+    }
+    return 0;
+}
