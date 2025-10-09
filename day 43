@@ -1,0 +1,71 @@
+Q85: Reverse a string.
+
+#include <stdio.h>
+#include <string.h> 
+void reverseString(char *str) {
+    if (str == NULL) {
+        return; 
+    }
+    int length = strlen(str);
+    int start = 0;
+    int end = length - 1;
+    char temp;
+    while (start < end) {
+        temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        start++;
+        end--;
+    }
+}
+int main() {
+    char myString[] = "hello";
+    printf("Original string: %s\n", myString);
+    reverseString(myString);
+    printf("Reversed string: %s\n", myString);
+    char anotherString[] = "programming";
+    printf("Original string: %s\n", anotherString);
+    reverseString(anotherString);
+    printf("Reversed string: %s\n", anotherString);
+    return 0;
+}
+Q86: Check if a string is a palindrome.
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+bool isPalindrome(char *str) {
+    int length = strlen(str);
+    int left = 0;
+    int right = length - 1;
+    while (left < right) {
+        if (str[left] != str[right]) {
+            return false; 
+        }
+        left++;
+        right--;
+    }
+    return true; 
+}
+int main() {
+    char s1[] = "madam";
+    char s2[] = "hello";
+    char s3[] = "racecar";
+    if (isPalindrome(s1)) {
+        printf("\"%s\" is a palindrome.\n", s1);
+    } else {
+        printf("\"%s\" is not a palindrome.\n", s1);
+    }
+    if (isPalindrome(s2)) {
+        printf("\"%s\" is a palindrome.\n", s2);
+    } else {
+        printf("\"%s\" is not a palindrome.\n", s2);
+    }
+    if (isPalindrome(s3)) {
+        printf("\"%s\" is a palindrome.\n", s3);
+    } else {
+        printf("\"%s\" is not a palindrome.\n", s3);
+    }
+    return 0;
+}
