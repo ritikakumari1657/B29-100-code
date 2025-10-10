@@ -1,0 +1,67 @@
+Q91: Remove all vowels from a string.
+
+#include <stdio.h>
+#include <string.h>
+void removeVowels(char* str) {
+   int i, j = 0;
+   int len = strlen(str);
+   char result[len + 1];
+   for (i = 0; i < len; i++) {
+       if (str[i] != 'a' && str[i] != 'e' && str[i] != 'i' && str[i] != 'o' && str[i] != 'u' &&
+           str[i] != 'A' && str[i] != 'E' && str[i] != 'I' && str[i] != 'O' && str[i] != 'U') {
+           result[j++] = str[i];
+       }
+   }
+   result[j] = '\0';
+   strcpy(str, result);
+}
+int main() {
+   char str[100];
+   printf("Enter a string: ");
+   gets(str);
+   removeVowels(str);
+   printf("String after removing vowels: %s\n", str);
+   return 0;
+}
+Q92: Find the first repeating lowercase alphabet in a string.
+
+#include <stdio.h>
+#include <string.h>
+char findFirstRepeatingChar(const char *str) {
+    int charCount[26] = {0}; 
+    for (int i = 0; str[i] != '\0'; i++) {
+        char currentChar = str[i];
+        if (currentChar >= 'a' && currentChar <= 'z') {
+            int index = currentChar - 'a';
+            if (charCount[index] == 1) {
+                return currentChar; 
+            }
+            charCount[index]++;
+        }
+    }
+    return '\0'; 
+}
+int main() {
+    char str1[] = "programming";
+    char result1 = findFirstRepeatingChar(str1);
+    if (result1 != '\0') {
+        printf("First repeating lowercase alphabet in \"%s\": %c\n", str1, result1);
+    } else {
+        printf("No repeating lowercase alphabet found in \"%s\"\n", str1);
+    }
+    char str2[] = "abcdefg";
+    char result2 = findFirstRepeatingChar(str2);
+    if (result2 != '\0') {
+        printf("First repeating lowercase alphabet in \"%s\": %c\n", str2, result2);
+    } else {
+        printf("No repeating lowercase alphabet found in \"%s\"\n", str2);
+    }
+    char str3[] = "hello";
+    char result3 = findFirstRepeatingChar(str3);
+    if (result3 != '\0') {
+        printf("First repeating lowercase alphabet in \"%s\": %c\n", str3, result3);
+    } else {
+        printf("No repeating lowercase alphabet found in \"%s\"\n", str3);
+    }
+    return 0;
+}
