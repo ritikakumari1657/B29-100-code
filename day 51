@@ -1,0 +1,45 @@
+Q101: Write a Program to take a sorted array(say nums[]) and an integer (say target) as inputs. The elements in the sorted array might be repeated. 
+You need to print the first and last occurrence of the target and print the index of first and last occurrence. Print -1, -1 if the target is not present.
+
+#include <stdio.h>
+void findFirstAndLastOccurrence(int nums[], int size, int target) {
+    int firstOccurrence = -1;
+    int lastOccurrence = -1;
+    for (int i = 0; i < size; i++) {
+        if (nums[i] == target) {
+            if (firstOccurrence == -1) {
+                firstOccurrence = i;
+                lastOccurrence = i;
+            } else {
+                lastOccurrence = i;
+            }
+        }
+    }
+    if (firstOccurrence != -1) {
+        printf("First occurrence of %d: Index %d\n", target, firstOccurrence);
+        printf("Last occurrence of %d: Index %d\n", target, lastOccurrence);
+    } else {
+        printf("-1, -1 (Target %d not found)\n", target);
+    }
+}
+int main() {
+    int nums1[] = {5, 7, 7, 8, 8, 10};
+    int size1 = sizeof(nums1) / sizeof(nums1[0]);
+    int target1 = 8;
+    printf("Array: {5, 7, 7, 8, 8, 10}, Target: 8\n");
+    findFirstAndLastOccurrence(nums1, size1, target1);
+    printf("\n");
+    int nums2[] = {1, 2, 3, 4, 5};
+    int size2 = sizeof(nums2) / sizeof(nums2[0]);
+    int target2 = 6;
+    printf("Array: {1, 2, 3, 4, 5}, Target: 6\n");
+    findFirstAndLastOccurrence(nums2, size2, target2);
+    printf("\n");
+    int nums3[] = {2, 2, 2, 2, 2};
+    int size3 = sizeof(nums3) / sizeof(nums3[0]);
+    int target3 = 2;
+    printf("Array: {2, 2, 2, 2, 2}, Target: 2\n");
+    findFirstAndLastOccurrence(nums3, size3, target3);
+    printf("\n");
+    return 0;
+}
