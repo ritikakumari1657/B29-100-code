@@ -1,0 +1,29 @@
+Q129: A file numbers.txt contains a list of integers separated by spaces. Read all integers, compute their sum and average, and print both.
+
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    FILE *file_ptr;
+    int num, count = 0;
+    long long sum = 0;
+    double average = 0.0;
+    const char* filename = "numbers.txt";
+    file_ptr = fopen(filename, "r"); 
+    if (file_ptr == NULL) {
+        printf("Error opening file %s\n", filename);
+        return 1;
+    } .
+    while (fscanf(file_ptr, "%d", &num) == 1) {
+        sum += num;
+        count++;
+    } 
+    fclose(file_ptr); 
+    if (count > 0) {
+        average = (double)sum / count;
+        printf("Sum of integers: %lld\n", sum);
+        printf("Average of integers: %.2f\n", average);
+    } else {
+        printf("No integers found in the file.\n");
+    }
+    return 0;
+}
