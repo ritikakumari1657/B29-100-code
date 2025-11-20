@@ -1,0 +1,79 @@
+Q133: Create an enum for months and print how many days each month has.
+
+
+#include <stdio.h>
+typedef enum {
+    JANUARY = 1,
+    FEBRUARY,
+    MARCH,
+    APRIL,
+    MAY,
+    JUNE,
+    JULY,
+    AUGUST,
+    SEPTEMBER,
+    OCTOBER,
+    NOVEMBER,
+    DECEMBER
+} Month;
+const int daysInMonth[] = {
+    0,   
+    31,  
+    28,  
+    31,  
+    30,
+    31,  
+    30,  
+    31,  
+    31,  
+    30,  
+    31,  
+    30, 
+    31   
+};
+int main() {
+    printf("Days in each month (non-leap year):\n");
+    for (Month m = JANUARY; m <= DECEMBER; m++) {
+        switch (m) {
+            case JANUARY:
+                printf("January has %d days\n", daysInMonth[m]);
+                break;
+            case FEBRUARY:
+                printf("February has %d days\n", daysInMonth[m]);
+                break;
+            case MARCH:
+                printf("March has %d days\n", daysInMonth[m]);
+                break;
+            case APRIL:
+                printf("April has %d days\n", daysInMonth[m]);
+                break;
+            case MAY:
+                printf("May has %d days\n", daysInMonth[m]);
+                break;
+            case JUNE:
+                printf("June has %d days\n", daysInMonth[m]);
+                break;
+            case JULY:
+                printf("July has %d days\n", daysInMonth[m]);
+                break;
+            case AUGUST:
+                printf("August has %d days\n", daysInMonth[m]);
+                break;
+            case SEPTEMBER:
+                printf("September has %d days\n", daysInMonth[m]);
+                break;
+            case OCTOBER:
+                printf("October has %d days\n", daysInMonth[m]);
+                break;
+            case NOVEMBER:
+                printf("November has %d days\n", daysInMonth[m]);
+                break;
+            case DECEMBER:
+                printf("December has %d days\n", daysInMonth[m]);
+                break;
+        }
+    }
+    
+    return 0;
+}
+  
