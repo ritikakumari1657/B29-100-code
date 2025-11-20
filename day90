@@ -1,0 +1,42 @@
+Q140: Define a struct with enum Gender and print person's gender.
+
+#include <stdio.h>
+typedef enum {
+    MALE,
+    FEMALE,
+    OTHER
+} Gender;
+typedef struct {
+    char name[50];
+    int age;
+    Gender gender; 
+} Person;
+void print_gender(Person p) {
+    printf("%s's gender is: ", p.name);
+    switch (p.gender) {
+        case MALE:
+            printf("Male\n");
+            break;
+        case FEMALE:
+            printf("Female\n");
+            break;
+        case OTHER:
+            printf("Other\n");
+            break;
+        default:
+            printf("Unknown\n");
+    }
+}
+int main() {
+    Person person1;
+    snprintf(person1.name, sizeof(person1.name), "Alice");
+    person1.age = 30;
+    person1.gender = FEMALE;
+    print_gender(person1);
+    Person person2;
+    snprintf(person2.name, sizeof(person2.name), "Bob");
+    person2.age = 25;
+    person2.gender = MALE;
+    print_gender(person2);
+    return 0;
+}
