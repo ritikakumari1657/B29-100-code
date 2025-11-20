@@ -1,0 +1,24 @@
+Q138: Print all enum names and integer values using a loop.
+
+
+#include <stdio.h>
+typedef enum {
+    RED,
+    GREEN,
+    BLUE,
+    COLOR_COUNT 
+} Color;
+const char* getColorName(Color color) {
+    switch (color) {
+        case RED: return "RED";
+        case GREEN: return "GREEN";
+        case BLUE: return "BLUE";
+        default: return "UNKNOWN";
+    }
+}
+int main() {
+    for (Color c = RED; c < COLOR_COUNT; ++c) {
+        printf("Enum Name: %s, Integer Value: %d\n", getColorName(c), c);
+    }
+    return 0;
+}
