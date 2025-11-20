@@ -1,0 +1,36 @@
+Q134: Define an enum with SUCCESS, FAILURE, and TIMEOUT, and print messages accordingly.
+
+#include <stdio.h>
+typedef enum {
+    SUCCESS,
+    FAILURE,
+    TIMEOUT
+} Status; 
+void print_status_message(Status status_code) {
+    switch (status_code) {
+        case SUCCESS:
+            printf("Operation successful.\n");
+            break;
+        case FAILURE:
+            printf("Operation failed.\n");
+            break;
+        case TIMEOUT:
+            printf("Operation timed out.\n");
+            break;
+        default:
+            printf("Unknown status code.\n");
+            break;
+    }
+}
+int main() {
+    Status s1 = SUCCESS;
+    Status s2 = FAILURE;
+    Status s3 = TIMEOUT;
+    printf("Status 1: ");
+    print_status_message(s1);
+    printf("Status 2: ");
+    print_status_message(s2);
+    printf("Status 3: ");
+    print_status_message(s3);
+    return 0;
+}
